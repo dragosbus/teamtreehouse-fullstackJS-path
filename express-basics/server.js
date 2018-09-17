@@ -8,12 +8,18 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.set("view engine", "pug");
 
+app.use((req, res, next)=>{
+    req.error = 404;
+    next();
+});
+
 app.get('/welcome', (req, res)=>{
     console.log(req.cookies.username);
     res.render("welcome", {user: req.cookies.username}); 
 });
 
 app.get("/hello", (req, res)=> {
+    console.log(res)
     res.render("index"); 
 });
 
