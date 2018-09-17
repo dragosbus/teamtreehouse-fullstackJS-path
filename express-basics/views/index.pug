@@ -1,12 +1,10 @@
 extends layout.pug
 
 block header
-    h1 Flash Card
+    h1 Flash cards
 block content
-    section#content
-        h2=prompt
-        ul
-            each color in colors
-                li=color
+    form(method="POST", action="/hello")
+        input(type="text", name="username")
+        button(type="submit") Go
 block footer
-    p Footer
+    p This is the footer

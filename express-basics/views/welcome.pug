@@ -3,7 +3,6 @@ html(lang="en")
     head
         title Express Basics
     body
-        include header.pug
-        include content.pug
-        include footer.pug
+        if user
+            h1 welcome #{user}
         
