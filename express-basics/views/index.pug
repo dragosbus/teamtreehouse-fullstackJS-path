@@ -1,0 +1,12 @@
+extends layout.pug
+
+block header
+    h1 Flash Card
+block content
+    section#content
+        h2=prompt
+        ul
+            each color in colors
+                li=color
+block footer
+    p Footer
