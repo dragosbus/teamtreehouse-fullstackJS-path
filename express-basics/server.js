@@ -6,6 +6,7 @@ const {data} = require("./data/data.json");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.set("view engine", "pug");
+app.use('/static', express.static('public/style.css'));
 
 app.get("/card", (req, res)=>{
     const {cards} = data;
