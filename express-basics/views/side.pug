@@ -2,8 +2,7 @@ extends layout.pug
 block header
     h1 Flash Cards
 block content
-    h4= query
-    p= hint
-    a(href=`/${cardId}/side`) Answer!
+    h4= answer
+    a(href=`/${cardId}`) Question!
 block footer
     p footer
