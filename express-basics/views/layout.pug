@@ -1,9 +1,10 @@
 doctype html
 html(lang="en")
-    head
-        title Express Basics
+    head Express basics
     body
-        include header.pug
-        include content.pug
-        include footer.pug
-        
+        header
+            block header
+        main
+            block content
+        footer
+            block footer

@@ -1,35 +1,17 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const app = express();
+const {data} = require("./data/data.json");
 
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
 app.set("view engine", "pug");
 
-app.use((req, res, next)=>{
-    req.error = 404;
-    next();
+app.get("/:id", (req, res)=>{
+     const {cards} = data;
+     res.render("card", {query: cards[req.params.id].question, hint: cards[req.params.id].hint})
 });
 
-app.get('/welcome', (req, res)=>{
-    console.log(req.cookies.username);
-    res.render("welcome", {user: req.cookies.username}); 
-});
-
-app.get("/hello", (req, res)=> {
-    console.log(res)
-    res.render("index"); 
-});
-
-app.post('/hello', (req, res)=>{
-    if(req.body.username) {
-        res.cookie('username', req.body.username);
-        res.redirect('/welcome');
-    }
-    res.redirect('/hello');
-});
 
 app.listen(process.env.PORT, process.env.IP, ()=> {
     console.log("Listen"); 
